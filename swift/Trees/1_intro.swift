@@ -19,9 +19,19 @@ public class Node {
 }
 
 struct BinaryTree {
-    var head: Node?
+    var parent: Node?
     var leftChild: Node?
     var rightChild: Node?
     var size = 0
     init() {}
+
+    mutating func addNode(_ value: Int) {
+        var currentNode = self.parent
+        if self.parent == nil {
+            print("we have nothing here")
+        }
+    }
 }
+
+var bt = BinaryTree()
+bt.addNode(3)
