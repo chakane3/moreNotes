@@ -21,9 +21,16 @@ struct LinkedList {
     var size: Int = 0
     init() {}
 
+    /*
+        Create a new node
+        Check if our list is empty
+            If it is, setup our head and tail as the node
+        If its not empty, push the node in by setting newNode.next = head
+        Increase our size
+    */
     mutating func pushNode(val: Int) {
         let newNode = Node(val)
-        if head == nil {
+        if isEmpty() {
             head = newNode
             tail = head
         } else {
@@ -33,96 +40,95 @@ struct LinkedList {
         size += 1
     }
 
+    /*
+        Setup a the new node to append, and a temporary node
+        Check if our list is empty
+            If its empty, set the head and tail to our new node
+            Increase size and return
+        If our list isnt empty
+            Traverse the list until were at the last element
+            Then set the tail.next = newNode
+            Set the tail = newNode
+            Increase size and return
+    */
     mutating func appendNode(val: Int) {
         let newNode = Node(val)
         var tempNode = head
         
-        if head == nil {
+        if isEmpty() {
             head = newNode
+            tail = newNode
+            size += 1
+            return
         } else {
             while tempNode != nil {
                 tempNode = tempNode?.next
             }
             tail?.next = newNode
+            tail = newNode
+            size += 1
+            return
         }
-        size += 1
     }
 
     mutating func addNodeAfterIndex(index: Int, val: Int) {
+
+        if isEmpty() {
+            self.pushNode(val: val)
+            return
+        }
         let newNode = Node(val)
         var currentNode = head
-        
-        // check if the given index is bigger than the size of the list
-        if self.size < index {
-            appendNode(val: val)
+
+        if index > size {
+            self.appendNode(val: val)
             return
         }
 
-        // check if the given index is smaller than 0
-        if 0 > index {
-            pushNode(val: val)
-            return
-        } 
+        for _ in 0..<index {
+            currentNode = currentNode?.next
+        }
+        newNode.next = currentNode?.next
+        currentNode?.next = newNode
+        size += 1
 
-        // check if our index is 0
-        if index == 0 {
+    }
+
+    /*
+        Push node if our list is empty or the given index is <= 0
+            Return
+        If neither of those apply above then setup our newNode and tempNode
+        If index is >= self.size treat it as if the given index is size-1
+            Return
+        If anything else doesnt apply the traverse the list until we get to the gien index
+    */
+    mutating func addNodeBeforeIndex(index: Int, val: Int) {
+        if isEmpty() || index <= 0 {
+            self.pushNode(val: val)
+            size += 1
+            return
+        }
+
+        let newNode = Node(val)
+        var currentNode = head
+
+        if index >= size {
+            for _ in 0..<self.size-3 {
+                currentNode = currentNode?.next
+            }
+            newNode.next = currentNode?.next
+            currentNode?.next = newNode
+            size += 1
+            return
+        } else {
+            for _ in 0..<index-1 {
+                currentNode = currentNode?.next
+            }
             newNode.next = currentNode?.next
             currentNode?.next = newNode
             size += 1
             return
         }
-
-        // normal operation
-        // The operation for adding after an index may look like this (i.e index = 1)
-        //     [1] -> [2]   [4] -> [5]
-        //             |     ^
-        //             v     |
-        // (new node) [3] -->
-        // The reference at [3] should be pointed at [4] (newnode.next = currentnode.next)
-        // The reference at [2] should be pointed to [3] (currentnode.next = newnode)
-        for _ in 0...index-1{
-            currentNode = currentNode?.next
-        }
-        newNode.next = currentNode?.next
-        currentNode?.next = newNode
-        size += 1
-    }
-
-    mutating func addNodeBeforeIndex(index: Int, val: Int) {
-        let newNode = Node(val)
-        var currentNode = head
-
-        // check if the given index is bigger than the size of the list
-        if self.size < index {
-            appendNode(val: val)
-            return
-        }
-
-        // check if the given index is smaller than 0
-        if 0 >= index {
-            pushNode(val: val)
-            return
-        }
-
-        // check if the index is 1
-        if index == 1 {
-            for _ in 0...index-1 {
-                currentNode = currentNode?.next
-            }
-            newNode.next = currentNode
-            head?.next = newNode
-            size += 1
-            return
-        }
-        
-        // normal operation (assumes we have 2+ nodes)
-        for _ in 0...index-2 {
-            currentNode = currentNode?.next
-        }
-        // same process as appending at index
-        newNode.next = currentNode?.next
-        currentNode?.next = newNode
-        size += 1
     }
 
     func get(forIndex index: Int) -> Int? {
@@ -139,15 +145,27 @@ struct LinkedList {
     }
 
     mutating func deleteAtIndex(forIndex index: Int) {
-        if head == nil {
+        if isEmpty() {
+            print("No elements in list, try adding some to test deletion")
+            return
+        }
+        if index > size || index < 0 {
+            print("invalid index")
+            return
+        }
+        var currentNode = head
+        if index == 0 {
+            head = head?.next
+            size -= 1
             return
         }
 
-        if index == 0 {
-            head = head?.next
-            return
+        for _ in 0..<index-1 {
+            currentNode = currentNode?.next
         }
-        // TODO: - Delete as normal
+        currentNode?.next = currentNode?.next?.next
+        size -= 1
+        return
     }
 
     func printList() {
@@ -159,6 +177,12 @@ struct LinkedList {
         print()
     }
 
+    func isEmpty() -> Bool {
+        if self.head == nil {
+            return true
+        }
+        return false
+    }
     
 }
 
@@ -168,24 +192,22 @@ struct LinkedList {
 // Either, we can add BEFORE an index or AFTER an index
 var ll = LinkedList()
 ll.pushNode(val: 10)
-ll.pushNode(val: 9)
-ll.pushNode(val: 7)
+ll.appendNode(val: 12)
 ll.pushNode(val: 5)
-ll.pushNode(val: 0)
+ll.addNodeAfterIndex(index: 0, val: 6)
+ll.addNodeAfterIndex(index: 1, val: 7)
+ll.addNodeAfterIndex(index: ll.size-2, val: 13)
+ll.addNodeBeforeIndex(index: 3, val: 9)
+ll.addNodeBeforeIndex(index: 0, val: 0)
+ll.addNodeBeforeIndex(index: 90, val: 19)
+ll.addNodeBeforeIndex(index: 6, val: 11)
+ll.addNodeAfterIndex(index: 0, val: 4)
+ll.deleteAtIndex(forIndex: 0)
+ll.deleteAtIndex(forIndex: 1)
+ll.deleteAtIndex(forIndex: 2)
 
-ll.appendNode(val: 14)
 
-// ll.addNodeAfterIndex(index: 0, val: 9)
-// ll.addNodeAfterIndex(index: 2, val: 7)
-// ll.addNodeAfterIndex(index: 3, val: 6)
-// ll.addNodeAfterIndex(index: 22, val: -1)
-// ll.addNodeAfterIndex(index: -2, val: 16)
-
-// ll.addNodeBeforeIndex(index: 0, val: 18)
-// ll.addNodeBeforeIndex(index: 1, val: 17)
-// ll.addNodeBeforeIndex(index: 3, val: 12)
-
-// ll.deleteAtIndex(forIndex: 0)
-// ll.deleteAtIndex(forIndex: 22)
 
 ll.printList()
+print("The head element is: \(ll.head!.val)")
+print("The head element is: \(ll.tail!.val)")

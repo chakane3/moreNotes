@@ -28,7 +28,7 @@ struct BinaryTree {
     mutating func addNode(_ value: Int) {
         var currentNode = self.parent
         if self.parent == nil {
-            print("we have nothing here")
+            currentNode
         }
     }
 }

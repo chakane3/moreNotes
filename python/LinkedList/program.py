@@ -50,7 +50,6 @@ class LinkedList:
         elif index > self.size:
             self.appendNode(value)
         else:
-
             for index in range(0, index):
                 currentNode = currentNode.next
 
@@ -59,14 +58,18 @@ class LinkedList:
             self.size += 1
 
     def addNodeBeforeIndex(self, value, index):
+
+        # check if the list is empty or if the index is <= 0
         if self.isEmpty == True or index <= 0:
             self.pushNode(value)
             self.size += 1
             return
 
+        # setup newnode and tempnode
         newNode = Node(value)
         currentNode = self.head   
 
+        # if index is >= self.size treat it as if the given index is size-1
         if index >= self.size:
             for index in range(0, self.size-3):
                 currentNode = currentNode.next
@@ -96,12 +99,9 @@ class LinkedList:
             self.size -= 1
             return
 
-        print("hi")
         for idx in range(0, index-1):
             if currentNode.next != None:
                 currentNode = currentNode.next
-        print("The node to delete is: ", currentNode.next.value)
-        print("The current node were on is: ", currentNode.value)
         currentNode.next = currentNode.next.next
         self.size -= 1
         return
@@ -127,10 +127,7 @@ L.pushNode(5)
 L.addNodeAfterIndex(6, 0)
 L.addNodeAfterIndex(7, 1)
 L.addNodeAfterIndex(13, L.size-2)
-
-
 L.addNodeBeforeIndex(9, 3)
-
 L.addNodeBeforeIndex(0, 0)
 L.addNodeBeforeIndex(19, 90)
 L.addNodeBeforeIndex(11, 6)
@@ -143,3 +140,11 @@ L.deleteNodeAtIndex(2)
 L.printList()
 print("The head is: ", L.head.value)
 print("The tail is: ", L.tail.value)
+
+
+""" final output
+
+4 6 9 10 11 13 19 12 
+The head is:  4
+The tail is:  12
+"""
