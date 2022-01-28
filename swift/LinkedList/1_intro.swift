@@ -137,7 +137,6 @@ struct LinkedList {
         if currentNode == nil {
             return -9999
         }
-
         for _ in 0...index-1 {
             currentNode = currentNode?.next
         }
@@ -168,6 +167,17 @@ struct LinkedList {
         return
     }
 
+    mutating func updateNodeAtIndex(forIndex index: Int, value: Int) {
+        if index < 0 || index > size || head == nil {
+            print("nothing to see here")
+        }
+        var currentNode = head
+        for _ in 0..<index {
+            currentNode = currentNode?.next
+        }
+        currentNode?.val = value
+    }
+
     func printList() {
         var currentNode = head
         while currentNode != nil {
@@ -177,19 +187,23 @@ struct LinkedList {
         print()
     }
 
+    func recursivePrint(_ headNode: Node?) {
+        guard headNode != nil else {
+            print()
+            return
+        }
+        print(headNode!.val, terminator: " ")
+        return recursivePrint(headNode?.next)
+    }
+
     func isEmpty() -> Bool {
         if self.head == nil {
             return true
         }
         return false
     }
-    
 }
 
-
-// This single node can have a link (reference) to another node. 
-// Theres 2 ways we can add a node.
-// Either, we can add BEFORE an index or AFTER an index
 var ll = LinkedList()
 ll.pushNode(val: 10)
 ll.appendNode(val: 12)
@@ -205,9 +219,11 @@ ll.addNodeAfterIndex(index: 0, val: 4)
 ll.deleteAtIndex(forIndex: 0)
 ll.deleteAtIndex(forIndex: 1)
 ll.deleteAtIndex(forIndex: 2)
-
+ll.updateNodeAtIndex(forIndex: 0, value: 0)
+ll.updateNodeAtIndex(forIndex: 6, value: 15)
 
 
 ll.printList()
+ll.recursivePrint(ll.head)
 print("The head element is: \(ll.head!.val)")
 print("The head element is: \(ll.tail!.val)")

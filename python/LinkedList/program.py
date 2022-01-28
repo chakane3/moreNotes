@@ -58,7 +58,6 @@ class LinkedList:
             self.size += 1
 
     def addNodeBeforeIndex(self, value, index):
-
         # check if the list is empty or if the index is <= 0
         if self.isEmpty == True or index <= 0:
             self.pushNode(value)

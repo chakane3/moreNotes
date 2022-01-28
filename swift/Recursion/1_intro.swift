@@ -17,9 +17,17 @@ class MyMath {
         }
         return n * factorial(n-1)
     }
+
+    func sumToOne(_ n: Int) -> Int {
+        guard n > 1 else {
+            return n
+        }
+        return n + sumToOne(n-1)
+    }
 }
 
 var p = MyMath()
 let powerRresult = p.powerOfX(2, 3)
 let factorialResult = p.factorial(3)
-print(factorialResult)
+let sumToOneResult = p.sumToOne(5)
+print(sumToOneResult)
