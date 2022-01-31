@@ -15,14 +15,10 @@ class MyLinkedList {
     init() {}
     
     func get(_ index: Int) -> Int {
+        if index >= size { return -1 }
         var currentNode = head
-        print("size: \(size)")
-        print("index: \(index)")
-        if currentNode == nil || index < 0 || index > size-1 {
-            return -1
-        }
         for _ in 0..<index {
-            currentNode = currentNode!.next
+            currentNode = currentNode?.next
         }
         return currentNode!.val
     }
@@ -46,6 +42,8 @@ class MyLinkedList {
         if isEmpty() {
             head = newNode
             tail = newNode
+            size += 1
+            return
         }
         while currentNode?.next != nil {
             currentNode = currentNode?.next
@@ -60,23 +58,17 @@ class MyLinkedList {
             return
         }
 
-        let newNode = Node(val)
-        var currentNode = head
-        if index >= size {
-            for _ in 0..<index-1 {
-                
-                currentNode = currentNode?.next
-            }
-            newNode.next = currentNode?.next
-            currentNode?.next = newNode
-        } else {
-            for _ in 0..<index-1 {
-                currentNode = currentNode?.next
-            }
-            newNode.next = currentNode?.next
-            currentNode?.next = newNode
+        var current = head
+        var prev: Node?
+        for _ in 0..<index {
+            prev = current
+            current = current?.next
         }
+        var node = Node(val)
+        prev?.next = node
+        node.next = current
         size += 1
+
     }
     
     func deleteAtIndex(_ index: Int) {
@@ -84,21 +76,19 @@ class MyLinkedList {
             print("No elements in list, try adding some to test deletion")
             return
         }
-        if index > size || index < 0 {
+        if index >= size || index < 0 {
             print("invalid index")
             return
         }
         var currentNode = head
         if index == 0 {
             head = head?.next
-            size -= 1
-            return
+        } else {
+            for _ in 0..<index-1 {
+                currentNode = currentNode?.next
+            }
+            currentNode?.next = currentNode?.next?.next
         }
-
-        for _ in 0..<index-1 {
-            currentNode = currentNode?.next
-        }
-        currentNode?.next = currentNode?.next?.next
         size -= 1
         return
     }
@@ -135,8 +125,26 @@ var leetcode = MyLinkedList()
 // leetcode.addAtTail(4)
 // leetcode.get(4)
 
+// 4
+// leetcode.addAtHead(1)
+// leetcode.addAtTail(3)
+// leetcode.addAtIndex(1, 2)
+// print("get(1): \(leetcode.get(1))")
+// leetcode.deleteAtIndex(0)
+// print("get(0): \(leetcode.get(0))")
 
-// 10
+// 6 
+// leetcode.addAtHead(1)
+// leetcode.addAtTail(3)
+// leetcode.addAtIndex(1, 2)
+// print("get(1): \(leetcode.get(1))")
+// print()
+// leetcode.deleteAtIndex(1)
+// print("get(1): \(leetcode.get(1))")
+
+
+
+// 8
 // leetcode.addAtHead(1)
 // leetcode.addAtTail(3)
 // leetcode.addAtIndex(1, 2)
@@ -146,20 +154,61 @@ var leetcode = MyLinkedList()
 // print("get(1): \(leetcode.get(1))")
 // print()
 
+// 10
+// leetcode.addAtHead(4)
+// leetcode.get(1)
+// leetcode.addAtHead(1)
+// leetcode.addAtHead(5)
+// leetcode.addAtHead(3)
+// leetcode.deleteAtIndex(7)
+// leetcode.addAtHead(3)
+// leetcode.get(3)
+// leetcode.get(3)
+// leetcode.get(1)
+// leetcode.deleteAtIndex(4)
+
+
 // 52
-leetcode.addAtHead(4)
-leetcode.get(1)
-leetcode.addAtHead(1)
-leetcode.addAtHead(5)
-leetcode.deleteAtIndex(3)
-leetcode.addAtHead(7)
-print("get(3): \(leetcode.get(3))")
-print("get(3): \(leetcode.get(3))")
-print()
-print("get(3): \(leetcode.get(3))")
-print()
-leetcode.addAtHead(1)
-leetcode.deleteAtIndex(4)
+// leetcode.addAtHead(4)
+// print("get(1): \(leetcode.get(1))")
+// print()
+// leetcode.addAtHead(1)
+// leetcode.addAtHead(5)
+// leetcode.deleteAtIndex(3)
+// leetcode.addAtHead(7)
+// print("get(3): \(leetcode.get(3))")
+// print("size: \(leetcode.size)")
+// print()
+// print("get(3): \(leetcode.get(3))")
+// print()
+// print("get(3): \(leetcode.get(3))")
+// print()
+// leetcode.addAtHead(1)
+// leetcode.deleteAtIndex(4)
+
+// 30
+// leetcode.addAtHead(4)
+// print("get(1): \(leetcode.get(1))")
+// // print()
+// // leetcode.addAtHead(1)
+// // leetcode.addAtHead(5)
+// // leetcode.deleteAtIndex(3)
+// // leetcode.addAtHead(7)
+// // print("get(3): \(leetcode.get(3))")
+// // print()
+// // print("get(3): \(leetcode.get(3))")
+// // print()
+// // print("get(3): \(leetcode.get(3))")
+// // print()
+// // leetcode.addAtHead(1)
+// // leetcode.deleteAtIndex(4)
 
 
+// 63
+leetcode.addAtIndex(1, 0)
+print("get(0): \(leetcode.get(0))")
+print("size: \(leetcode.size)")
+
+
+print("\nprintList(): ", terminator: " ")
 leetcode.printList()
