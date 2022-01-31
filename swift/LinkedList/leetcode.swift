@@ -16,8 +16,10 @@ class MyLinkedList {
     
     func get(_ index: Int) -> Int {
         if index >= size { return -1 }
+        if size == 1 && index == 1 { return -1 }
         var currentNode = head
         for _ in 0..<index {
+            print("hi")
             currentNode = currentNode?.next
         }
         return currentNode!.val
@@ -154,6 +156,7 @@ var leetcode = MyLinkedList()
 // print("get(1): \(leetcode.get(1))")
 // print()
 
+
 // 10
 // leetcode.addAtHead(4)
 // leetcode.get(1)
@@ -189,25 +192,25 @@ var leetcode = MyLinkedList()
 // 30
 // leetcode.addAtHead(4)
 // print("get(1): \(leetcode.get(1))")
-// // print()
-// // leetcode.addAtHead(1)
-// // leetcode.addAtHead(5)
-// // leetcode.deleteAtIndex(3)
-// // leetcode.addAtHead(7)
-// // print("get(3): \(leetcode.get(3))")
-// // print()
-// // print("get(3): \(leetcode.get(3))")
-// // print()
-// // print("get(3): \(leetcode.get(3))")
-// // print()
-// // leetcode.addAtHead(1)
-// // leetcode.deleteAtIndex(4)
+// print()
+// leetcode.addAtHead(1)
+// leetcode.addAtHead(5)
+// leetcode.deleteAtIndex(3)
+// leetcode.addAtHead(7)
+// print("get(3): \(leetcode.get(3))")
+// print()
+// print("get(3): \(leetcode.get(3))")
+// print()
+// print("get(3): \(leetcode.get(3))")
+// print()
+// leetcode.addAtHead(1)
+// leetcode.deleteAtIndex(4)
 
 
 // 63
 leetcode.addAtIndex(1, 0)
 print("get(0): \(leetcode.get(0))")
-print("size: \(leetcode.size)")
+// print("size: \(leetcode.size)")
 
 
 print("\nprintList(): ", terminator: " ")
