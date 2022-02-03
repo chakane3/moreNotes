@@ -1,0 +1,55 @@
+Write out thought process (NJIT DSA solutions)
+Ask as many questions as possible
+Feel free to make mistakes
+DSA is important, OOP principles
+Dont reinvent the wheel
+
+
+Coding Rubric
+    Code quality
+        Readability
+        Easy to understand
+        Testable
+
+    Conceptual thinking
+        Stay away from bruteforce solutions
+        Choose correct data strucutres
+
+    Desision making
+        Be confident in your approach
+        Effectively communicate desions
+        B clear about your desicisons
+
+    Resourcefulness
+        Know how to google
+        Listen for hints
+        Debugging
+    
+    Adaptability
+        Open to feedback
+        Show interest in learning about a really hard Concept
+
+
+
+
+Phone a friend
+How Do You Think Through Problems
+
+
+
+Programming Problem Solving Patterns
+
+Sliding Window
+    Here the problem input is a linear data structure (linked list, array, string)
+    The output is typically the longest/shortest substring/array or a single value
+
+    The problems we may come across with the sliding window pattern are: https://medium.com/techie-delight/top-problems-on-sliding-window-technique-8e63f1e2b1fa
+
+        
+
+
+
+
+
+
+
