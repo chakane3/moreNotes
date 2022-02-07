@@ -34,17 +34,48 @@ Coding Rubric
 
 Phone a friend
 How Do You Think Through Problems
+    1. Understand the problem fully
+    2. Find a solution that works
+    3. Find a more efficient solution
+    4. Write Code
+    5. Test Code
+    
 
 
 
-Programming Problem Solving Patterns
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Programming Problem Patterns
 
 Sliding Window
     Here the problem input is a linear data structure (linked list, array, string)
     The output is typically the longest/shortest substring/array or a single value
 
-    The problems we may come across with the sliding window pattern are: https://medium.com/techie-delight/top-problems-on-sliding-window-technique-8e63f1e2b1fa
+    The problems we may come across with the sliding window pattern are: 
+    https://medium.com/techie-delight/top-problems-on-sliding-window-technique-8e63f1e2b1fa
 
+Two Pointer/ Iterators
+    This is a pattern where 2 pointers iterate throught a data structure until one or both of the pointers 
+    hit a certain condition. Its useful when searching pairs in a sorted array or linked list 
+    (i.e when you have to compare each element of an array to its other elements).
+
+    Ways to identify if we need the 2 pointer technique is if we have a sorted list and need to 
+    find a set of eleemnts that satisify a condition.
         
 
 
