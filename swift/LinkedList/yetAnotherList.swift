@@ -1,21 +1,24 @@
 import Foundation
 
-class Node {
+public class Node {
     var val: Int
     var next: Node?
-    init(_ value: Int) {
-        self.val = value
+
+    init(_ val: Int) {
+        self.val = val
+        next = nil
     }
 }
-
-class MyLinkedList {
+struct LinkedList {
     var head: Node?
     var tail: Node?
     var size: Int = 0
     init() {}
-    
+}
 
-    func addAtHead(_ val: Int) {
+extension LinkedList {
+
+    mutating func pushNode(_ val: Int) {
         let newNode = Node(val)
         if head == nil {
             head = newNode
@@ -26,14 +29,14 @@ class MyLinkedList {
         head = newNode
         size += 1
     }
-    
-    func addAtTail(_ val: Int) {
+
+    mutating func appendNode(_ val: Int) {
         let newNode = Node(val)
         var tempNode = head
 
         // our list is empty
         if tempNode == nil {
-            addAtHead(val)
+            pushNode(val)
             return
         }
 
@@ -45,31 +48,14 @@ class MyLinkedList {
         tempNode?.next = newNode
         size += 1
     }
-    
-    
-    func addAtIndex(_ idx: Int, _ val: Int) {
+
+    mutating func insertBefore(_ val: Int, _ idx: Int) {
         let newNode = Node(val)
         var tempNode = head
 
-
-
-        // check if we have a valid index
-        if idx == 0   {
-            addAtHead(val)
-            return
-        } 
-
-        if idx < 0 || idx > size {
-            return
-        }
-
-        // if index equals the length, then append
-        if idx == size {
-            addAtTail(val)
-            return
-        }
-
-        if idx < 0 || idx > size - 1{
+        // check if list is empty
+        if tempNode == nil || idx <= 0 {
+            pushNode(val)
             return
         }
 
@@ -80,9 +66,9 @@ class MyLinkedList {
         tempNode?.next = newNode
         size += 1
     }
-    
-    func deleteAtIndex(_ idx: Int) {
-        if idx+1 > size || idx < 0 {
+
+    mutating func deleteAtIndex(_ idx: Int) {
+        if idx > size || idx < 0 {
             return
         }
 
@@ -98,11 +84,11 @@ class MyLinkedList {
         tempNode?.next = tempNode?.next?.next
         size -= 1
     }
-    
+
     func get(_ idx: Int) -> Int {
         var tempNode = head
         
-        if idx < 0 || idx+1 > size {
+        if idx < 0 || idx > size {
             return -1
         } else {
             for _ in 0..<idx {
@@ -111,4 +97,22 @@ class MyLinkedList {
             return tempNode!.val
         }
     }
+
+    func printList(_ headNode: Node?) {
+        guard headNode != nil else {
+            print()
+            return
+        }
+        print(headNode!.val, terminator: " ")
+        return printList(headNode!.next)
+    }
+
 }
+
+var ll = LinkedList()
+ll.pushNode(5)
+ll.appendNode(7)
+ll.insertBefore(6, 0)
+ll.deleteAtIndex(0)
+
+ll.printList(ll.head)
