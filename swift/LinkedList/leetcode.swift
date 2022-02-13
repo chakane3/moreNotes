@@ -111,4 +111,58 @@ class MyLinkedList {
             return tempNode!.val
         }
     }
+
+    func reverse() {
+        var prev: Node? = nil
+        var current = head
+        while current != nil {
+            let nextTmp = current?.next
+            current?.next = prev
+            prev = current
+            current = nextTmp
+        }
+    }
+
+    func recursivePrint(_ headNode: Node?) {
+        guard headNode != nil else {
+            print()
+            return
+        }
+        print(headNode!.val, terminator: " ")
+        return recursivePrint(headNode?.next)
+    }
 }
+
+var ll = MyLinkedList()
+ll.addAtHead(5)
+ll.addAtHead(4)
+ll.addAtHead(3)
+ll.addAtHead(2)
+ll.addAtHead(1)
+ll.recursivePrint(ll.head)
+ll.reverse()
+ll.recursivePrint(ll.head)
+
+
+
+
+/* Check is the linked list has a cycle
+
+This uses a 2 pointer approach
+
+func hasCycle(_ head: Node?) -> Bool {
+    do {
+        var slow = head
+        var fast = head.next
+        while(slow != fast) {
+            slow = slow.next
+            fast = fast.next.next
+        }
+        return true
+    } catch {
+        return false
+    }
+}
+
+
+*/
