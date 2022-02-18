@@ -1,0 +1,42 @@
+#1 Requirements/Clarifications
+    - Users can send/receive messages to other Users
+    - A user can add another user to their contacts
+
+#2 Data used
+    - 1M DAU's
+    - 20 messages a day (500KB) = 10MB
+    1M * 10MB = 10000000MB = 10000GB = 10TB daily
+
+    - This sytem needs to be highly available with low latency because messages are supposedly instant
+
+#3 endpoints
+
+    - send message
+    - receive message
+    - add contact
+    - group message
+    - user
+    
+#4 How are we storing Data?
+
+Users
+id          PK
+name        varchar
+email       varchar
+number      varchar
+contacts    FK, user_ID
+
+Message
+id          PK
+content     varchar
+img         url
+video       url
+from        user_ID
+recipent    user_ID|FK
+
+contactlist
+
+
+
+
+

@@ -1,0 +1,17 @@
+#1 Clarifications/Requirements
+- data is sourced from API
+- client's mobile, web
+- top news stories can be served in our own databse
+- article has text, img, or video
+
+1M DAUs * 1MB = 1TB processed daily
+system is read heavy bc users dont generate information
+
+#2 endpoints
+- user can search 
+- watch video
+
+
+
+
+
