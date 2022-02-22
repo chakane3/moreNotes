@@ -42,7 +42,30 @@ input[type="submit"] {
   cursor: pointer;
 }
 
-h1 {
-    color: blue;
-    font-size: 32px;
+
+.outer-container {
+  height: 100px;
+  width: 100px;
+}
+
+span {
+  display: block;
+}
+
+.first {
+  background: blue;
+}
+
+.inner-container {
+  height: 50px;
+  width: 100px;
+  background: green;
+}
+
+.second {
+  background: yellow;
+}
+
+.third {
+  background: red;
 }
