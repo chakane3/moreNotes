@@ -1,5 +1,7 @@
 from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
+db = SQLAlchemy(app) # pass our app to our db so we can start creating DB tables via classes
 
 @app.route('/')
 @app.route('/home')
@@ -8,6 +10,13 @@ def home_page():
     
 @app.route('/market')
 def market_page():
+    # """Thoughts for the future
+
+    # Items can come from a DB/API
+    # A seperate python script could load up our "items" list to generate new data
+
+
+    # """
     items = [
         {'id': 1, 'name': 'Knife Talk', 'artist': 'Drake & 21 Savage', 'barcode': '0000000001', 'price': 250},
         {'id': 2, 'name': 'Im Assumin', 'artist': 'Blac Youngsta', 'barcode': '0000000002', 'price': 250},
