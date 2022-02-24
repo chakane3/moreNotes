@@ -40,11 +40,26 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Register</a>
+                    <a class="nav-link" href="{{url_for('register_page')}}">Register</a>
                 </li>
             </ul>
         </div>
     </nav>
+
+    <!-- Display flashed messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}  <!-- Checks if messages is not null-->
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                <button type="button" class="m1-2 mb-1 close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
     {% block content %}
 
     {% endblock %}
