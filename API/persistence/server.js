@@ -6,9 +6,9 @@ const port = 8080
 //  add middleware - allows us to post and get json from out endpoints
 app.use( express.json() )
 
-app.get('/', (req, res) => {
-    res.send("Hello, World!")
-})
+// app.get('/', (req, res) => {
+//     res.send("Hello, World!")
+// })
 
 app.use('/api/v1/students', studentRoutes)
 

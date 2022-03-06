@@ -13,4 +13,7 @@ router.post('/', controller.addStudent)
 // allows client to delete from the database
 router.delete('/:id', controller.deleteStudent)
 
+// allows client to update an existing student
+router.put('/:id', controller.updateStudent)
+
 module.exports = router

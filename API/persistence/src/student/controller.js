@@ -31,6 +31,7 @@ const addStudent = (req, res) => {
     pool.query(queries.checkEmailExists, [email], (error, results) => {
         if (results === undefined) {
             res.send("Email already exists")
+            return
         }
 
         pool.query(queries.addStudent, [name, email, age, dob], (error, results) => {
@@ -48,12 +49,39 @@ const deleteStudent = (req, res) => {
         const noStudentFound = !results.rows.length
         if(noStudentFound) {
             res.send("Student does not exist")
+            return
         }
 
         pool.query(queries.deleteStudent, [id], (error, results) => {
             if (error) throw error
             res.status(200).send("Student was removed")
+            console.log("Student was removed") 
         })
+    })
+}
+
+const updateStudent = (req, res) => {
+    const id = parseInt(req.params.id)
+    const {name} = req.body
+    pool.query(queries.getStudentById, [id], (error, results) => {
+        const noStudentFound = !results.rows.length
+        if (noStudentFound) {
+            res.send("Student does not exist")
+            return
+        }
+        pool.query(queries.updateStudent, [name, id], (error, results) => {
+            if (error) throw error
+            res.status(200).send("Student updated")
+        })
+    })
+}
+
+const addScholarship = (req, res) => {
+    const {name, description, deadline, link, amount} = req.body
+    pool.query(queries.insertScholarship, [name, description, deadline, link, amount], (error, results) => {
+        if (error) throw error
+            res.status(201).send("Success!")
+            console.log("Scholarship created")
     })
 }
 
@@ -62,4 +90,6 @@ module.exports = {
     getStudentsById,
     addStudent,
     deleteStudent,
+    updateStudent,
+    addScholarship,
 }
