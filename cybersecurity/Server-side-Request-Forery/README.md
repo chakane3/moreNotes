@@ -30,9 +30,9 @@ Now the server will fetch the contents of the /admin URL and return it to the us
 
 Applications may trust applications that come from the local macine because:
 <ul>
-    <li>The implementation of the access control check. The developer, etc may had that check sit in front of the application server.<li>
-    <li>For special circumstances where an admin may need access without logging in when coming in from the local machine. This may happen in case the admin loses their credentials. tThe assumption here is that only a trusted user would be coming in from the server itself<li>
-    <li>The admin interface may be listening in from a different port number other than the main application.<li>
+    <li>The implementation of the access control check. The developer, etc may had that check sit in front of the application server.</li>
+    <li>For special circumstances where an admin may need access without logging in when coming in from the local machine. This may happen in case the admin loses their credentials. tThe assumption here is that only a trusted user would be coming in from the server itself</li>
+    <li>The admin interface may be listening in from a different port number other than the main application.</li>
 <ul>
 <br>
 
