@@ -1,0 +1,38 @@
+.red {
+    width: 150px;
+    height: 150px;
+    background-color: red;
+  }
+  
+  .blue {
+    width: 150px;
+    height: 150px;
+    background-color: blue;
+  }
+  
+  .yellow {
+    width: 150px;
+    height: 150px;
+    background-color: yellow;
+  }
+body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.red {
+    display: flex;
+    order: -1;
+}
+
+.yellow {
+    display: flex;
+    order: 0;
+}
+
+.blue {
+    display: flex;
+    order: 1;
+}

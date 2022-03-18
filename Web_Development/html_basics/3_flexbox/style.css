@@ -1,0 +1,21 @@
+.container {
+    border: 5px solid #ffcc5c;
+    display: flex;
+    display: flexbox;
+}
+
+/* .logout {
+    align-self: flex-start;
+} */
+
+/* .home {
+    margin-right: auto;
+} */
+
+/* .home {
+    flex: 1;
+}
+
+.logout {
+    flex: 1;
+} */
