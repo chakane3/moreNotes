@@ -1,3 +1,5 @@
+package NJIT_java.miscl;
+
 import java.util.Scanner;
 
 public class helloWorld {
