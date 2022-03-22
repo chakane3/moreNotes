@@ -26,12 +26,12 @@ public class recursiveBinarySearch {
 
         if(arr[guess] > k) {
 
-            // change the upperbound
+            // change the lowerbound
             return recursiveBinarySearch(arr, k, lowerBound, guess-1);
         }
         else if(arr[guess] < k) {
 
-            // change the lowerbound
+            // change the upperbound
             return recursiveBinarySearch(arr, k, guess+1, upperBound);
 
         } else {
