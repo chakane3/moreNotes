@@ -10,6 +10,10 @@ public class LengthOfLastWord {
 
     }
 
+    /* 
+        (1) Use the split() function to seperate each word by space into an array.
+        (2) Return the last element in the array with its length
+     */
     public static int lengthOfLastWord(String s) {
         String[] strArr = s.split(" ");
         return strArr[strArr.length-1].length();
