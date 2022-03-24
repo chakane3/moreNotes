@@ -2,6 +2,7 @@ package NJIT_java.miscl;
 
 public class sqrt {
     public static void main(String[] args) {
+        mySqrt(9);
 
     }
 
@@ -12,15 +13,27 @@ public class sqrt {
     public static int mySqrt(int x) {
         int lowerBound = 0;
         int upperBound = x;
+        int aCount = 0;
 
         while(lowerBound <= upperBound) {
-            int guess = lowerBound + upperBound / 2;
-            System.out.println(guess);
-            break;
+            if(aCount == 10) {
+                break;
+            }
+            int guess = (lowerBound + upperBound) / 2;
+            
+            if(guess * guess == x) {
+                return guess;
+            }
+            else if(guess*guess > guess) {
+                upperBound = guess;
+            }
+            else if(guess*guess < guess) {
+                lowerBound = guess;
+            }
+            System.out.println(guess + " -> " + guess*guess);
+            aCount++;
         }
-
-
-        return 0;
+        return -1;
     }
     
 }
