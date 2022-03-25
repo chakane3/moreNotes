@@ -9,6 +9,7 @@ public class MergeSort {
         // }
     }
 
+    // Try this out: T(n) = T(n/2) + T(n/2) + (n-1) for n=8
     private static void mergeSort(int[] arr, int startIndex, int endIndex) {
         // base case
         if(startIndex >= endIndex) {
