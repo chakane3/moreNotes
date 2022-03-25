@@ -144,4 +144,4 @@ a[href*="static"] {
 
 
 ### CSS flexbox
-<link href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">a really good resource for flexbox</link>
+<a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">a really good resource for flexbox</a>
