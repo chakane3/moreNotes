@@ -141,3 +141,7 @@ a[href*="static"] {
 <li>position: fixed -> The element is positioned relative to the browser window</li>
 </ul>
 </details>
+
+
+### CSS flexbox
+<link href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">a really good resource for flexbox</link>
