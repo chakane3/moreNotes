@@ -101,3 +101,43 @@ a[title] {
     color: purple;
 }
 ```
+
+An exact attribute selector (=) selects every attribute matching a value. Here, we only select 'a' tags that point to google:
+```css
+a[href="https://google.com"] {
+    color: purple;
+}
+```
+
+A "begins with" attribute selector (^=) is used to select every attribute beginning with a value. We can also have a "ends with" attribute selector ($=):
+```css
+a[href^="https://"] {
+    color: blue;
+}
+
+a[href$=".org"] {
+    color: green;
+}
+```
+
+A global attribute selector (*=) selects a substring:
+```css
+a[href*="static"] {
+    color: blue;
+}
+```
+
+
+<details>
+<summary>Elements can have different display qualities that we can use to customize its appearance and positon on the screen:</summary>
+
+<ul>
+<li>display: block -> An element generates a block element box that typically has a width of 100% inside the parent container</li>
+<li>display: inline -> These dont generate line breaks and only take up as much space as their content requires</li>
+<li>display: none -> Defines wether or not an element displays a box at all</li>
+<li>position: static -> The element is positioned according to the normal flow of the document</li>
+<li>position: relative -> The element is positioned according to the normal flow of the document and then offsets relative to itself based on the values of: top, right, bottom, left</li>
+<li>position: absolute -> The element is positioned relative to its nearest non-static parent element</li>
+<li>position: fixed -> The element is positioned relative to the browser window</li>
+</ul>
+</details>
