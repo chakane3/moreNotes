@@ -43,7 +43,6 @@ Alternative loop for JS:
 for(const x of y) {}
 ```
 
-
 If our HTML looks has this [getElementByID]
 ```html
 <input type="text" id="name-input-text" placeholder="FN">
@@ -51,6 +50,7 @@ If our HTML looks has this [getElementByID]
 <p id="top-heading"></p>
 <script src="script.js"></script>
 ```
+
 Our JS file could have this to add in a new p tag
 ```javascript
 const addName = () => {
@@ -60,6 +60,7 @@ const addName = () => {
     topHeading.textContent = `Hello, ${userSubmission}`
 }
 ```
+
 <br>
 We can create new HTML elements by using: createElement(). If our html has this:
 ```html
@@ -67,12 +68,14 @@ We can create new HTML elements by using: createElement(). If our html has this:
     <p>New website</p>
 </body>
 ```
+
 Our JS file can add a new element to the body by implementing:
 ```javacript
 let newP = document.createElement("p")
 newP.textContent = "text here"
 document.body.appendChild(newP)
 ```
+
 If we want to add to a list we would:
 ```javascript
 let listItem = document.createElement("li")
@@ -80,6 +83,7 @@ listItem.textContent = "new event"
 let listElement = document.getElementById("lineupList")
 listElement.appendChild(listItem)
 ```
+
 We can delete elements using: removeChild()
 <br>
 
