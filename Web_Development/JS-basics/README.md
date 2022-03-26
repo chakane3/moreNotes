@@ -63,6 +63,7 @@ const addName = () => {
 
 <br>
 We can create new HTML elements by using: createElement(). If our html has this:
+
 ```html
 <body>
     <p>New website</p>
