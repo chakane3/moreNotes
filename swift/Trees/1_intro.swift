@@ -65,6 +65,7 @@ extension Node {
 
     /*
         lnr: visit left -> node -> right
+        visit the leftmost, then the root, then the right
                     10              output: 1, 6, N, 7, 8, 9, 10
                    /  \                     N, 11, 14, 20, 22
                   7   11                
@@ -81,6 +82,7 @@ extension Node {
 
     /*
         nlr: visit node -> left -> right
+        visit the node, then left, then right
                     10              output: 10, 7, 6, 1, N, 8, 
                    / \                      9, 11, N, 20, 14, 22
                   7   11                
@@ -100,6 +102,7 @@ extension Node {
 
     /*
         lrn: left -> right -> node
+        visit the leftmost, then the right most, then itself
                     10             
                    /  \                      
                   7   11                
