@@ -1,4 +1,7 @@
 package NJIT_java.Trees;
+import java.util.List;
+import java.util.Stack;
+import java.util.ArrayList;
 
 public class BinaryTree {
     int size = 0;
@@ -68,13 +71,103 @@ public class BinaryTree {
         return root;
     }
 
-    public void inOrderTraversal(Node root) {
-        
+    // were given a binary tree in the form of a list and we return a List
+    // this is an iterative solution
+    public List <Integer> inOrderTraversal(Node root) {
+        Stack<Node> stack = new Stack<>();
+        List<Integer> output = new ArrayList<>();
+
+        if(root == null) {
+            return output;
+        }
+
+        Node current = root;
+        while(current != null || !stack.isEmpty()) {
+            // left traversal
+            while(current != null) {
+                stack.push(current);
+                current = current.leftChild;
+            }
+
+            // node hit
+            current = stack.pop();
+            output.add(current.value);
+
+            // right traversal
+            current = current.rightChild;
+        }
+        return output;
+    }
+
+
+    public List <Integer> preorderTraversal(Node root) {
+        Stack<Node> stack = new Stack<>();
+        List<Integer> output = new ArrayList<>();
+
+        if (root == null) {
+            return output;
+        }
+
+        stack.push(root);
+        while(!stack.isEmpty() && root != null) {
+            Node node = stack.pop();
+            output.add(node.value);
+
+            if(node.rightChild != null) {
+                stack.push(node.rightChild);
+            }
+
+            if(node.leftChild != null) {
+                stack.push(node.leftChild);
+            }
+        }
+        return output;
+    }
+ 
+    // similar as post order traversal except line 139
+    public List<Integer> postorderTraversal(Node root) {
+        Stack<Node> stack = new Stack<>();
+        List<Integer> output = new ArrayList<>();
+
+        if (root == null) {
+            return output;
+        }
+
+        stack.push(root);
+        while(!stack.isEmpty() && root != null) {
+            Node node = stack.pop();
+            output.add(0, node.value);
+
+            if(node.leftChild != null) {
+                stack.push(node.leftChild);
+            }
+
+            if(node.rightChild != null) {
+                stack.push(node.rightChild);
+            }
+        }
+        return output;
     }
 
     public static void main(String[] args) {
         BinaryTree bt = new BinaryTree();
         Node root = new Node(10);
-        bt.insert(root, 12);
+        bt.insertR(root, 12); // test recursive solution
+        bt.insert(root, 4);
+        bt.insert(root, 22);
+        bt.insert(root, 3);
+        bt.insert(root, 2);
+        bt.insert(root, 5);
+        bt.insert(root, 21);
+
+        List<Integer> inorder = bt.inOrderTraversal(root);
+        System.out.println("inorder traversal: " + inorder);
+
+        List<Integer> preorder = bt.preorderTraversal(root);
+        System.out.println("preorder traversal: " + preorder);
+
+        List<Integer> postorder = bt.postorderTraversal(root);
+        System.out.println("postorder traversal: " + postorder);
+
     }
 }
