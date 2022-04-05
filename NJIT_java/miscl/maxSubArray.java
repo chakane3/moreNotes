@@ -31,27 +31,29 @@ public class maxSubArray {
                     The max of these 2 choices will be the best answer to the Max contoguous subarray 
                     sum we can get for subarrays ending at index i.
 
-                    Example:
+                Example:
 
-        index     0  1   2  3   4  5  6   7  8
-        Input: [ -2, 1, -3, 4, -1, 2, 1, -5, 4 ]
-                 -2, 1, -2, 4,  3, 5, 6,  1, 5    'maxEndingHere' at each point
-        
-        The best subarrays we would take if we took them:
-          ending at index 0: [ -2 ]                 (snippet from index 0 to index 0)
-          ending at index 1: [ 1 ]                  (snippet from index 1 to index 1) [we just took the item at index 1]
-          ending at index 2: [ 1, -3 ]              (snippet from index 1 to index 2)
-          ending at index 3: [ 4 ]                  (snippet from index 3 to index 3) [we just took the item at index 3]
-          ending at index 4: [ 4, -1 ]              (snippet from index 3 to index 4)
-          ending at index 5: [ 4, -1, 2 ]           (snippet from index 3 to index 5)
-          ending at index 6: [ 4, -1, 2, 1 ]        (snippet from index 3 to index 6)
-          ending at index 7: [ 4, -1, 2, 1, -5 ]    (snippet from index 3 to index 7)
-          ending at index 8: [ 4, -1, 2, 1, -5, 4 ] (snippet from index 3 to index 8)
+                index     0  1   2  3   4  5  6   7  8
+                Input: [ -2, 1, -3, 4, -1, 2, 1, -5, 4 ]
+                        -2, 1, -2, 4,  3, 5, 6,  1, 5    'maxEndingHere' at each point
+                
+                The best subarrays we would take if we took them:
+                ending at index 0: [ -2 ]                 (snippet from index 0 to index 0)
+                ending at index 1: [ 1 ]                  (snippet from index 1 to index 1) [we just took the item at index 1]
+                ending at index 2: [ 1, -3 ]              (snippet from index 1 to index 2)
+                ending at index 3: [ 4 ]                  (snippet from index 3 to index 3) [we just took the item at index 3]
+                ending at index 4: [ 4, -1 ]              (snippet from index 3 to index 4)
+                ending at index 5: [ 4, -1, 2 ]           (snippet from index 3 to index 5)
+                ending at index 6: [ 4, -1, 2, 1 ]        (snippet from index 3 to index 6)
+                ending at index 7: [ 4, -1, 2, 1, -5 ]    (snippet from index 3 to index 7)
+                ending at index 8: [ 4, -1, 2, 1, -5, 4 ] (snippet from index 3 to index 8)
 
-        Notice how we are changing the end bound by 1 everytime.
+                Notice how we are changing the end bound by 1 everytime.
         */
 
             maxEndingHere = Math.max(maxEndingHere + arr[i], arr[i]);
+
+            // this line asks: did we beat the maxSoFar with maxEndingHere?
             maxSoFar = Math.max(maxSoFar, maxEndingHere);
         }
         return maxSoFar;
