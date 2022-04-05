@@ -21,26 +21,29 @@ public class MergeSort {
         mergeSort(arr, startIndex, middleIndex);
         mergeSort(arr, middleIndex+1, endIndex);
 
-        System.out.print("before merge: ");
-        for(int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i]+" ");
-        }
-        System.out.println();
+        // System.out.print("before merge: ");
+        // for(int i = 0; i < arr.length; i++) {
+        //     System.out.print(arr[i]+" ");
+        // }
+        // System.out.println();
 
         // merge each half
         merge(arr, startIndex, middleIndex, endIndex);
 
-        System.out.print("after merge: ");
-        for(int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i]+" ");
-        }
-        System.out.println("\n");
+        // System.out.print("after merge: ");
+        // for(int i = 0; i < arr.length; i++) {
+        //     System.out.print(arr[i]+" ");
+        // }
+        // System.out.println("\n");
     }
 
     private static void merge(int[] arr, int startIndex, int middleIndex, int endIndex) {
         // declare seperate arrays for the first list and the second list
         int[] firstHalf = new int[middleIndex - startIndex + 1];
         int[] secondHalf = new int[endIndex - middleIndex];
+        for(int i = 0; i < firstHalf.length; i++) {
+            System.out.print(firstHalf[i] + " ");
+        }
 
         // populate the first half
         for(int i = startIndex; i < middleIndex + 1; i++) {

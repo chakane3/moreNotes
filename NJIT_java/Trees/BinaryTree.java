@@ -6,17 +6,17 @@ import java.util.ArrayList;
 public class BinaryTree {
     int size = 0;
     
-    static class Node {
-        Node rightChild;
-        Node leftChild;
+    static class TreeNode {
+        TreeNode rightChild;
+        TreeNode leftChild;
         int value;
-        Node(int value) {
+        TreeNode(int value) {
             this.value = value;
         }
     }
 
     /* Recursive Solution */
-    public void insertR(Node root, int val) {
+    public void insertR(TreeNode root, int val) {
         // check wether or not the value to insert is greater 
         // than the current nodes value
         if(val < root.value) {
@@ -25,7 +25,7 @@ public class BinaryTree {
             if(root.leftChild != null) {
                 insertR(root, val);
             } else {
-                Node newNode = new Node(val);
+                TreeNode newNode = new TreeNode(val);
                 root.leftChild = newNode;
             }
         } else {
@@ -33,17 +33,17 @@ public class BinaryTree {
             if(root.rightChild != null) {
                 insertR(root, val);
             } else {
-                Node newNode = new Node(val);
+                TreeNode newNode = new TreeNode(val);
                 root.rightChild = newNode;
             }
         }
     }
 
     /* Iterative Solution */
-    public Node insert(Node root, int val) {
+    public TreeNode insert(TreeNode root, int val) {
         // edge case: if no root exists
-        if(root == null) return new Node(val);
-        Node currentNode = root;
+        if(root == null) return new TreeNode(val);
+        TreeNode currentNode = root;
         while(true) {
 
             // if our current node's value is less than the given value
@@ -54,7 +54,7 @@ public class BinaryTree {
                 if(currentNode.rightChild != null) {
                     currentNode = currentNode.rightChild;
                 } else {
-                    currentNode.rightChild = new Node(val);
+                    currentNode.rightChild = new TreeNode(val);
                     break;
                 }
             } else {
@@ -63,7 +63,7 @@ public class BinaryTree {
                 if(currentNode.leftChild != null) {
                     currentNode = currentNode.leftChild;
                 } else {
-                    currentNode.leftChild = new Node(val);
+                    currentNode.leftChild = new TreeNode(val);
                     break;
                 }
             }
@@ -73,15 +73,15 @@ public class BinaryTree {
 
     // were given a binary tree in the form of a list and we return a List
     // this is an iterative solution
-    public List <Integer> inOrderTraversal(Node root) {
-        Stack<Node> stack = new Stack<>();
+    public List <Integer> inOrderTraversal(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
         List<Integer> output = new ArrayList<>();
 
         if(root == null) {
             return output;
         }
 
-        Node current = root;
+        TreeNode current = root;
         while(current != null || !stack.isEmpty()) {
             // left traversal
             while(current != null) {
@@ -100,8 +100,8 @@ public class BinaryTree {
     }
 
 
-    public List <Integer> preorderTraversal(Node root) {
-        Stack<Node> stack = new Stack<>();
+    public List <Integer> preorderTraversal(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
         List<Integer> output = new ArrayList<>();
 
         if (root == null) {
@@ -110,7 +110,7 @@ public class BinaryTree {
 
         stack.push(root);
         while(!stack.isEmpty() && root != null) {
-            Node node = stack.pop();
+            TreeNode node = stack.pop();
             output.add(node.value);
 
             if(node.rightChild != null) {
@@ -125,8 +125,8 @@ public class BinaryTree {
     }
  
     // similar as post order traversal except line 139
-    public List<Integer> postorderTraversal(Node root) {
-        Stack<Node> stack = new Stack<>();
+    public List<Integer> postorderTraversal(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
         List<Integer> output = new ArrayList<>();
 
         if (root == null) {
@@ -135,7 +135,7 @@ public class BinaryTree {
 
         stack.push(root);
         while(!stack.isEmpty() && root != null) {
-            Node node = stack.pop();
+            TreeNode node = stack.pop();
             output.add(0, node.value);
 
             if(node.leftChild != null) {
@@ -149,16 +149,18 @@ public class BinaryTree {
         return output;
     }
 
+
+
     public static void main(String[] args) {
         BinaryTree bt = new BinaryTree();
-        Node root = new Node(10);
-        bt.insertR(root, 12); // test recursive solution
-        bt.insert(root, 4);
-        bt.insert(root, 22);
-        bt.insert(root, 3);
-        bt.insert(root, 2);
-        bt.insert(root, 5);
-        bt.insert(root, 21);
+        TreeNode root = new TreeNode(18);
+        bt.insertR(root, 10); // test recursive solution
+        bt.insert(root, 30);
+        bt.insert(root, 8);
+        bt.insert(root, 13);
+        bt.insert(root, 15);
+        bt.insert(root, 32);
+     
 
         List<Integer> inorder = bt.inOrderTraversal(root);
         System.out.println("inorder traversal: " + inorder);

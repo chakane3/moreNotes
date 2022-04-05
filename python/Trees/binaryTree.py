@@ -49,14 +49,20 @@ def postOrderTraversal(r):
 
         
 
-root = TreeNode(20)
+root = TreeNode(10)
+root.insert(4)
 root.insert(12)
+root.insert(3)
+root.insert(5)
 root.insert(22)
-print("pre order traversal: ", end=" ")
+root.insert(2)
+root.insert(21)
+
+print("in order traversal: ", end=" ")
 inOrderTraversal(root)
 print()
 
-print("post order traversal: ", end=" ")
+print("pre order traversal: ", end=" ")
 preOrderTraversal(root)
 print()
 
