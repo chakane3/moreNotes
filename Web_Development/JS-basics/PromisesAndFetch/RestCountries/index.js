@@ -10,6 +10,8 @@ function loadCountries(e) {
     .then((response) => {
 
         // check if the response is not ok
+        // note that .ok returns a boolean value
+        // we can also have response.stataus which will return a 300+ error
         if(!response.ok) {
             throw Error(`Something went wrong: ${response.status}`)
         }
