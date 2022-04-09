@@ -128,4 +128,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-discord/myServerBot/crime.py
+./crime.py
