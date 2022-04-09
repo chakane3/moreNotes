@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8"/>
-        <meta name="viewport" content="width-device-width, initial-scale=1.0"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta http-equiv="X-UA-Compatible" content="ie-edge"/>
         <title>Countries</title>
         <script src="index.js" defer></script>
@@ -12,7 +12,10 @@
         <h1>Countries</h1>
         <form>
             <input type="text" placeholder="Enter a country name" id="country-name-input" required/>
+            <button onclick="loadCountries()">Submit</button>
         </form>
-        <section id="country-container"></section>
+        <section id="country-container">
+            <p id="add-country-info"></p>
+        </section>
     </body>
 </html>
