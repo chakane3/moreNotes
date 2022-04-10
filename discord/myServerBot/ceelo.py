@@ -1,7 +1,9 @@
 from os import remove
 import random
 import time
-from userCashDB import add_funds, remove_funds
+
+
+from userCashDB import add_funds, remove_funds, getuserAmount
 async def ceelo(user, message, betAmt):
     """
     The game starts with the user entering in $ceelo 250
@@ -48,6 +50,11 @@ async def ceelo(user, message, betAmt):
 
     """
 
+    if getuserAmount(message.author.name) <= 0:
+        await message.channel.send("YOU ARE BROKE! Go do some crime")
+        return 
+
+
     userDice1 = random.randint(1,6)
     userDice2 = random.randint(1,6)
     userDice3 = random.randint(1,6)
@@ -69,6 +76,8 @@ async def ceelo(user, message, betAmt):
     botRoll += str(botDice1)
     botRoll += str(botDice1)
     botRoll += str(botDice1)
+    print(userRoll)
+    print(botRoll)
 
     userDict = {}
     botDict = {}
@@ -87,22 +96,131 @@ async def ceelo(user, message, betAmt):
 
 
 
-    if "456" in userRoll:
+    if "456" == userRoll:
         add_funds(user,betAmt*2)
         await message.channel.send('You won!')
+        return
+
+    if "654" == userRoll:
+        add_funds(user,betAmt*2)
+        await message.channel.send('You won!')
+        return
+
+    if "546" == userRoll:
+        add_funds(user,betAmt*2)
+        await message.channel.send('You won!')
+        return
+
+    if "645" == userRoll:
+        add_funds(user,betAmt*2)
+        await message.channel.send('You won!')
+        return
+
+    if "564" == userRoll:
+        add_funds(user,betAmt*2)
+        await message.channel.send('You won!')
+        return
+
+    if "465" == userRoll:
+        add_funds(user,betAmt*2)
+        await message.channel.send('You won!')
+        return
     
-    if "123" in userRoll:
+    if "123" == userRoll:
         remove_funds(user,betAmt)
         await message.channel.send('You lost!')
+        return
+
+    if "213" == userRoll:
+        remove_funds(user,betAmt)
+        await message.channel.send('You lost!')
+        return
+
+    if "321" == userRoll:
+        remove_funds(user,betAmt)
+        await message.channel.send('You lost!')
+        return
+
+    if "312" == userRoll:
+        remove_funds(user,betAmt)
+        await message.channel.send('You lost!')
+        return
+
+    if "132" == userRoll:
+        remove_funds(user,betAmt)
+        await message.channel.send('You lost!')
+        return
+
+    if "231" == userRoll:
+        remove_funds(user,betAmt)
+        await message.channel.send('You lost!')
+        return
         
 
-    if "456" in botRoll:
+
+    if "456" == botRoll:
         remove_funds(user,betAmt)
         await message.channel.send("You lost!")
-        
-    if "123" in botRoll:
-        remove_funds(user, betAmt)
+        return
+
+    if "654" == botRoll:
+        remove_funds(user,betAmt)
         await message.channel.send("You lost!")
+        return
+
+    if "546" == botRoll:
+        remove_funds(user,betAmt)
+        await message.channel.send("You lost!")
+        return
+    
+    if "645" == botRoll:
+        remove_funds(user,betAmt)
+        await message.channel.send("You lost!")
+        return
+
+    if "564" == botRoll:
+        remove_funds(user,betAmt)
+        await message.channel.send("You lost!")
+        return
+
+    if "465" == botRoll:
+        remove_funds(user,betAmt)
+        await message.channel.send("You lost!")
+        return
+
+
+        
+    if "123" == botRoll:
+        add_funds(user, betAmt)
+        await message.channel.send("You won!")
+        return
+
+    if "213" == botRoll:
+        add_funds(user, betAmt)
+        await message.channel.send("You won!")
+        return
+
+    if "321" == botRoll:
+        add_funds(user, betAmt)
+        await message.channel.send("You won!")
+        return
+
+    if "312" == botRoll:
+        add_funds(user, betAmt)
+        await message.channel.send("You won!")
+        return
+
+    if "132" == botRoll:
+        add_funds(user, betAmt)
+        await message.channel.send("You won!")
+        return
+
+    if "231" == botRoll:
+        add_funds(user, betAmt)
+        await message.channel.send("You won!")
+        return
+        
+
 
     userPoint = 0
     botPoint = 0
@@ -119,9 +237,11 @@ async def ceelo(user, message, betAmt):
     if(userPoint > botPoint):
         add_funds(user, betAmt)
         await message.channel.send("You won {}!".format(betAmt*2))
-    else:
+    elif (userPoint < botPoint):
         remove_funds(user, betAmt)
         await message.channel.send("You lost {}!".format(betAmt))
+    else:
+        await message.channel.send("Draw! Play again...")
 
 
 #TODO: block user from betting if theyre negative: tell them to commit a crime

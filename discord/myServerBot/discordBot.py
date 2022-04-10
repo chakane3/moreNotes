@@ -2,9 +2,10 @@ import discord
 import random
 import os
 from dotenv import load_dotenv
+from requests import delete
 
 from crime import do_crime
-from userCashDB import add_funds, getuserAmount, remove_funds, deleteAll
+from userCashDB import add_funds, getuserAmount, remove_funds, resetUserFunds
 from ceelo import ceelo
 from discord.ext import commands
 from discord_components import DiscordComponents, Button, Select, SelectOption, ComponentsBot
@@ -14,8 +15,6 @@ DiscordComponents(client)
 
 
 # @client.command()
-# async def select(ctx):
-    
 # called when the bot is ready to be used
 
 @client.event
@@ -28,36 +27,28 @@ async def on_message(message):
   if message.author == client.user:
     return
 
-  # button (blackjack)
-  if message.content.startswith('$restart'):
-    await message.channel.send("do you want to die?? (this will reset your funds and change your nickname)", components = [
-    [ Button(label="die", style="3", emoji='😈', custom_id='button1'),
-      Button(label='live', style='4', emoji='🥴', custom_id='button2')
-    ]
-  ])
- 
-  interaction = await client.wait_for('button_click')
-  await interaction.send(content = 'Button clicked!', ephemeral=False)
-  
+  if message.content.startswith("$die"):
+    resetUserFunds(message.author.name)
+    await message.channel.send("Your balance is now at $0")
 
   # select
-  if message.content.startswith('$select'):
-    await message.channel.send("select", components = [
-        Select(
-            placeholder = "Select something!",
-            options = [
-                SelectOption(label="A", value="A"),
-                SelectOption(label="B", value="B")
-            ]
-        )
-    ])
+  # if message.content.startswith('$select'):
+  #   await message.channel.send("select", components = [
+  #       Select(
+  #           placeholder = "Do you want to restart your life?",
+  #           options = [
+  #               SelectOption(label="A", value="A"),
+  #               SelectOption(label="B", value="B")
+  #           ]
+  #       )
+  #   ])
 
-    while True:
-        try:
-            select_interaction = await client.wait_for("select_option")
-            await select_interaction.send(content = f"{select_interaction.values[0]} selected!", ephemeral = False)
-        except:
-            await message.channel.send("urmom")
+  #   while True:
+  #       try:
+  #           select_interaction = await client.wait_for("select_option")
+  #           await select_interaction.send(content = f"{select_interaction.values[0]} selected!", ephemeral = False)
+  #       except:
+  #           await message.channel.send("urmom")
 
 
   # do crime

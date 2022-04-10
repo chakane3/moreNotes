@@ -46,6 +46,12 @@ def remove_funds(user, amount):
         cur.close()
         print("done!")
 
+def resetUserFunds(user):
+    cur = con.cursor()
+    cur.execute("UPDATE usercash SET amount=? WHERE username=?", (0, user))
+    con.commit()
+    cur.close()
+
 def checkIfUserExists(user):
     cur = con.cursor()
     cur.execute('''SELECT * FROM usercash''')
@@ -70,6 +76,8 @@ def getuserAmount(user):
             return row[1]
         print(row)
     cur.close()
+
+
 
 def deleteAll():
     cur = con.cursor()
