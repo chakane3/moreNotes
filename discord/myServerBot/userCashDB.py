@@ -85,6 +85,8 @@ def printTable():
     for row in rows:
         print(row)
 
+
+
     
 # deleteAll() 
 # update_funds("cs499", 200)
