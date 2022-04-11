@@ -1,11 +1,13 @@
 import random
 import os
 from dotenv import load_dotenv
+from matplotlib.cbook import ls_mapper
 from crime import do_crime
 from userCashDB import add_funds, getuserAmount, remove_funds, resetUserFunds
 from ceelo import ceelo
 from discord.ext import commands
 from discord_components import DiscordComponents, Button, Select, SelectOption, ComponentsBot
+from blackjack import blackJack
 
 client = commands.Bot("$")
 DiscordComponents(client)
@@ -80,6 +82,10 @@ async def on_message(message):
     else:
       
       await ceelo(message.author.name, message, int(userBetAmt[1]))
+
+  # play blackjack
+  if message.content.startswith('$blackjack'):
+    await blackJack(message)
 
 
 
