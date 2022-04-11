@@ -1,9 +1,6 @@
 package NJIT_java.Trees;
 import java.util.List;
 import java.util.Stack;
-
-import javax.swing.plaf.basic.BasicTreeUI.PropertyChangeHandler;
-
 import java.util.ArrayList;
 
 public class BinaryTree {
@@ -201,6 +198,13 @@ public class BinaryTree {
         }
     }
 
+    public static int height(TreeNode root) {
+        if(root == null) return 0;
+        int left = height(root.leftChild);
+        int right = height(root.rightChild);
+        return 1+Math.max(left,right);
+    }
+
 
 
 
@@ -234,6 +238,8 @@ public class BinaryTree {
 
         List<Integer> postorderR = bt.postorder(root);
         System.out.println("postorder traversal: " + postorderR);
+
+        System.out.println("\nThe height of the tree is: " + height(root));
 
     }
 }
