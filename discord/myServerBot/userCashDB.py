@@ -1,13 +1,6 @@
-from getpass import getuser
 import sqlite3
 
-from requests import delete
-
 con = sqlite3.connect('cashDB')
-# create a table
-# cur.execute(''' CREATE TABLE usercash (username text, amount integer)''')
-
-
 
 def add_funds(user, amount):
     cur = con.cursor()
@@ -29,7 +22,6 @@ def add_funds(user, amount):
         cur.execute('''INSERT INTO usercash (username, amount) VALUES (?,?)''', (user, amount))
         con.commit()
         cur.close()
-        print("done!")
 
 def remove_funds(user, amount):
     cur = con.cursor()
@@ -44,7 +36,6 @@ def remove_funds(user, amount):
         cur.execute('''INSERT INTO usercash (username, amount) VALUES (?,?)''', (user, amount))
         con.commit()
         cur.close()
-        print("done!")
 
 def resetUserFunds(user):
     cur = con.cursor()
@@ -58,7 +49,6 @@ def checkIfUserExists(user):
     con.commit()
     rows = cur.fetchall()
     for row in rows:
-        print(row)
         if row[0] == user:
             cur.close()
             return True
@@ -93,13 +83,6 @@ def printTable():
     for row in rows:
         print(row)
 
-
-
-    
-# deleteAll() 
-# update_funds("cs499", 200)
-# update_funds("hwijj", 250)
-printTable()
 
 
     

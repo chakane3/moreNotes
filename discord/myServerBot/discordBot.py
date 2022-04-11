@@ -1,9 +1,6 @@
-import discord
 import random
 import os
 from dotenv import load_dotenv
-from requests import delete
-
 from crime import do_crime
 from userCashDB import add_funds, getuserAmount, remove_funds, resetUserFunds
 from ceelo import ceelo
@@ -27,7 +24,7 @@ async def on_message(message):
   if message.author == client.user:
     return
 
-  if message.content.startswith("$die"):
+  if message.content.startswith("$reset"):
     resetUserFunds(message.author.name)
     await message.channel.send("Your balance is now at $0")
 
