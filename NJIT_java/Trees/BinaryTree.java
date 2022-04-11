@@ -1,6 +1,9 @@
 package NJIT_java.Trees;
 import java.util.List;
 import java.util.Stack;
+
+import javax.swing.plaf.basic.BasicTreeUI.PropertyChangeHandler;
+
 import java.util.ArrayList;
 
 public class BinaryTree {
@@ -149,6 +152,57 @@ public class BinaryTree {
         return output;
     }
 
+    /*
+        Recursive solutions for traversals
+    */
+
+    public static List<Integer> inorder(TreeNode root) {
+        List<Integer> output = new ArrayList<>();
+        if(root == null) return output;
+        inorderR(root, output);
+        return output;
+    }
+
+    public static void inorderR(TreeNode root, List<Integer> output) {
+        if(root != null) {
+            inorderR(root.leftChild, output);
+            output.add(root.value);
+            inorderR(root.rightChild, output);
+        }
+    }
+
+    public static List<Integer> preorder(TreeNode root) {
+        List<Integer> output = new ArrayList<>();
+        if(root == null) return output;
+        preorderR(root, output);
+        return output;
+    }
+
+    public static void preorderR(TreeNode root, List<Integer> output) {
+        if(root != null) {
+            output.add(root.value);
+            preorderR(root.leftChild, output);
+            preorderR(root.rightChild, output);
+        }
+    }
+
+    public static List<Integer> postorder(TreeNode root) {
+        List<Integer> output = new ArrayList<>();
+        if(root == null) return output;
+        postorderR(root, output);
+        return output;
+    }
+
+    public static void postorderR(TreeNode root, List<Integer> output) {
+        if(root != null) {
+            postorderR(root.leftChild, output);
+            postorderR(root.rightChild, output);
+            output.add(root.value);
+        }
+    }
+
+
+
 
 
     public static void main(String[] args) {
@@ -161,7 +215,7 @@ public class BinaryTree {
         bt.insert(root, 15);
         bt.insert(root, 32);
      
-
+        System.out.println("Iterative traversals");
         List<Integer> inorder = bt.inOrderTraversal(root);
         System.out.println("inorder traversal: " + inorder);
 
@@ -170,6 +224,16 @@ public class BinaryTree {
 
         List<Integer> postorder = bt.postorderTraversal(root);
         System.out.println("postorder traversal: " + postorder);
+
+        System.out.println("\nRecursive traversals");
+        List<Integer> inorderR = bt.inorder(root);
+        System.out.println("inorder traversal: " + inorderR);
+
+        List<Integer> preorderR = bt.preorder(root);
+        System.out.println("preorder traversal: " + preorderR);
+
+        List<Integer> postorderR = bt.postorder(root);
+        System.out.println("postorder traversal: " + postorderR);
 
     }
 }
