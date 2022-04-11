@@ -1,16 +1,16 @@
 # Overview of commands
 
 ## $crime
-Enter in '''$crime''' to try and do some sort of crime to acquire some quick funds. There is a chance however that the crime doest work out and you may get heavily fined. 
+Enter in ```$crime``` to try and do some sort of crime to acquire some quick funds. There is a chance however that the crime doest work out and you may get heavily fined. 
 
 ## $check
-Enter '''$check''' to see how much money you have
+Enter ```$check``` to see how much money you have
 
 ## $ceelo
-Enter in '''$ceelo (bet amount)''' to try out your luck in betting with the bot. 
+Enter in ```$ceelo (bet amount)``` to try out your luck in betting with the bot. 
 
 ## $reset
-If you do alot of crime and had a really bad streak of luck, your account balance may be nagative by a high amount. In this case you have the choice to reset your funds by hitting '''$reset''' 
+If you do alot of crime and had a really bad streak of luck, your account balance may be nagative by a high amount. In this case you have the choice to reset your funds by hitting ```$reset```
 
 # TODO
 <ul>
