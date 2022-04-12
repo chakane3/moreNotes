@@ -1,20 +1,18 @@
 import random
 import os
+import black
 from dotenv import load_dotenv
-from matplotlib.cbook import ls_mapper
 from crime import do_crime
 from userCashDB import add_funds, getuserAmount, remove_funds, resetUserFunds
 from ceelo import ceelo
 from discord.ext import commands
 from discord_components import DiscordComponents, Button, Select, SelectOption, ComponentsBot
-from blackjack import blackJack
+from playBlackJack import blackJack
+from blackjack import *
+import discord
 
 client = commands.Bot("$")
 DiscordComponents(client)
-
-
-# @client.command()
-# called when the bot is ready to be used
 
 @client.event
 async def on_ready():
@@ -29,26 +27,6 @@ async def on_message(message):
   if message.content.startswith("$reset"):
     resetUserFunds(message.author.name)
     await message.channel.send("Your balance is now at $0")
-
-  # select
-  # if message.content.startswith('$select'):
-  #   await message.channel.send("select", components = [
-  #       Select(
-  #           placeholder = "Do you want to restart your life?",
-  #           options = [
-  #               SelectOption(label="A", value="A"),
-  #               SelectOption(label="B", value="B")
-  #           ]
-  #       )
-  #   ])
-
-  #   while True:
-  #       try:
-  #           select_interaction = await client.wait_for("select_option")
-  #           await select_interaction.send(content = f"{select_interaction.values[0]} selected!", ephemeral = False)
-  #       except:
-  #           await message.channel.send("urmom")
-
 
   # do crime
   if message.content.startswith('$crime'):
@@ -75,8 +53,6 @@ async def on_message(message):
   if message.content.startswith('$ceelo'):
     userStr = message.content
     userBetAmt = userStr.split(" ")
-
-    # check is user entered in a number to bet
     if(len(userStr) <= 6):
       await message.channel.send("enter a number to bet after $ceelo (i.e $ceelo 100)")
     else:
@@ -87,9 +63,32 @@ async def on_message(message):
   if message.content.startswith('$blackjack'):
     await blackJack(message)
 
+  if message.content.startswith("$embed"):
+    dealerHand = deal(deck)
+    userHand = deal(deck)
+    embed = discord.Embed(description="hit - take another card\nstand - end game")
+    embed.set_author(name=message.author.name)
+    embed.add_field(name="Your hand  ➡️  {}".format(userHand), value="\u200b")
+    embed.add_field(name="\u200b", value="Value: {}".format(total(userHand)), inline=True)
 
+    embed.add_field(name="Dealer hand  ➡️  [{}]".format(dealerHand[0]), value="\u200b")
+    embed.add_field(name="\u200b", value="Value: {}".format(total(dealerHand)))
+
+
+
+    await message.channel.send(embed=embed)
+
+
+    components = [
+      [Button(label="Hit", style="3", custom_id="button1"), 
+      Button(label="Stand", style="2", custom_id="button2")]
+    ]
+
+    await message.channel.send(components=components)
+    # interaction = await client.wait_for("button_click")
+    # await interaction.send(content="Button clicked", ephemeral=False)
+   
 
 
 load_dotenv()
 client.run(os.getenv('token'))
-# bot.run(os.getenv('token'))

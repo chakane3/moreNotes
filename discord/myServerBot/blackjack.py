@@ -13,15 +13,10 @@
 
 
 """
+
 import random
-deck = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]*4
-
-async def blackJack(message):
-    await message.channel.send(deal(deck))
-
-    if message.content.startswith("$hit"):
-        await message.channel.send(hit(hand))
-
+import asyncio
+deck = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]*8
 
 def deal(deck):
     hand = []
@@ -47,5 +42,36 @@ def hit(hand):
                 total+= 11
         else:
             total += card
+    return total 
+
+def total(hand):
+    total = 0
+    for card in hand:
+        if card == "J" or card == "Q" or card == "K":
+            total += 10
+        elif card == "A":
+            if total >= 11:
+                total += 1
+            else:
+                total += 11
+        else:
+            total += card
     return total
+
+async def reached21(message, userHand, dealerHand):
+    if total(userHand) == 21:
+        await message.channel.send("Congrats you won!")
+    elif total(dealerHand) == 21:
+        await message.channel.send("You lost!")
+    else: await message.channel.send("No 21")
+
+async def game(message, userHand, dealerHand):
+    choice = 0
+    # clear()
+    await reached21(message, userHand, dealerHand)
+    await message.channel.send("There are {} cards remaining".format(len(deck)))
+
+
+
+
     
