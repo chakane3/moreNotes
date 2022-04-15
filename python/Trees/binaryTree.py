@@ -26,7 +26,7 @@ class TreeNode:
 
 # lnr
 def inOrderTraversal(r):
-    # if r checks if we have a value given
+    # if r checks if our current root is not null
     if r:
         inOrderTraversal(r.leftChild)
         print(r.value,end=" ")

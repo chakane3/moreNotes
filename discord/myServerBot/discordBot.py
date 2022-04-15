@@ -1,6 +1,5 @@
 import random
 import os
-import black
 from dotenv import load_dotenv
 from crime import do_crime
 from userCashDB import add_funds, getuserAmount, remove_funds, resetUserFunds
