@@ -1,3 +1,3 @@
 # moreNotes
  
-Here to documents my notes on whatever im learning
+Here to document my notes on whatever im learning
