@@ -2,11 +2,11 @@ package NJIT_java.Sorting;
 
 public class MergeSort {
     public static void main(String[] args) {
-        int[] arr = {8, 3, 4, 1, 2, 7, 5, 6};
+        int[] arr = {2, 2, 2, 2, 4, 1};
         mergeSort(arr, 0, arr.length-1);
-        // for(int i = 0; i < arr.length; i++){
-        //     System.out.print(arr[i]+" ");
-        // }
+        for(int i = 0; i < arr.length; i++){
+            System.out.print(arr[i]+" ");
+        }
     }
 
     // Try this out: T(n) = T(n/2) + T(n/2) + (n-1) for n=8
@@ -21,29 +21,14 @@ public class MergeSort {
         mergeSort(arr, startIndex, middleIndex);
         mergeSort(arr, middleIndex+1, endIndex);
 
-        // System.out.print("before merge: ");
-        // for(int i = 0; i < arr.length; i++) {
-        //     System.out.print(arr[i]+" ");
-        // }
-        // System.out.println();
-
         // merge each half
         merge(arr, startIndex, middleIndex, endIndex);
-
-        // System.out.print("after merge: ");
-        // for(int i = 0; i < arr.length; i++) {
-        //     System.out.print(arr[i]+" ");
-        // }
-        // System.out.println("\n");
     }
 
     private static void merge(int[] arr, int startIndex, int middleIndex, int endIndex) {
         // declare seperate arrays for the first list and the second list
         int[] firstHalf = new int[middleIndex - startIndex + 1];
         int[] secondHalf = new int[endIndex - middleIndex];
-        for(int i = 0; i < firstHalf.length; i++) {
-            System.out.print(firstHalf[i] + " ");
-        }
 
         // populate the first half
         for(int i = startIndex; i < middleIndex + 1; i++) {
