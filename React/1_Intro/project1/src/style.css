@@ -1,0 +1,30 @@
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-items {
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.reactLogo {
+    width: 60px;
+}
+
+.footer {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    background-color: gray;
+    padding: 10px;
+    
+}
+
+.nav-items > li {
+    padding: 10px;
+}
