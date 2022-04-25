@@ -1,4 +1,4 @@
-package NJIT_java.Trees;
+
 import java.util.List;
 import java.util.Stack;
 import java.util.ArrayList;
@@ -213,11 +213,11 @@ public class BinaryTree {
         BinaryTree bt = new BinaryTree();
         TreeNode root = new TreeNode(18);
         bt.insertR(root, 10); // test recursive solution
-        bt.insert(root, 30);
-        bt.insert(root, 8);
-        bt.insert(root, 13);
-        bt.insert(root, 15);
-        bt.insert(root, 32);
+        bt.insertR(root, 30);
+        bt.insertR(root, 8);
+        bt.insertR(root, 13);
+        bt.insertR(root, 15);
+        bt.insertR(root, 32);
      
         System.out.println("Iterative traversals");
         List<Integer> inorder = bt.inOrderTraversal(root);

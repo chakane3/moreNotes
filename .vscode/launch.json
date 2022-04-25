@@ -5,6 +5,55 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Launch BinaryTree",
+            "request": "launch",
+            "mainClass": "BinaryTree",
+            "projectName": "moreNotes_1ef6f744"
+        },
+        {
+            "type": "java",
+            "name": "Launch TreeTraversals",
+            "request": "launch",
+            "mainClass": "TreeTraversals",
+            "projectName": "moreNotes_1ef6f744"
+        },
+        {
+            "type": "java",
+            "name": "Launch BinaryInsert",
+            "request": "launch",
+            "mainClass": "BinaryInsert",
+            "projectName": "moreNotes_1ef6f744"
+        },
+        {
+            "type": "java",
+            "name": "Launch MergeSortedArray",
+            "request": "launch",
+            "mainClass": "MergeSortedArray",
+            "projectName": "moreNotes_1ef6f744"
+        },
+        {
+            "type": "java",
+            "name": "Launch m",
+            "request": "launch",
+            "mainClass": "m",
+            "projectName": "moreNotes_1ef6f744"
+        },
+        {
+            "type": "java",
+            "name": "Launch A",
+            "request": "launch",
+            "mainClass": "A",
+            "projectName": "moreNotes_1ef6f744"
+        },
+        {
+            "type": "java",
+            "name": "Launch test",
+            "request": "launch",
+            "mainClass": "NJIT_java.Notes.src.test",
+            "projectName": "moreNotes_1ef6f744"
+        },
+        {
             "type": "pwa-chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",

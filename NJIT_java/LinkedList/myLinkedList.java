@@ -1,5 +1,3 @@
-package NJIT_java.LinkedList;
-
 public class myLinkedList {
     Node head;
     int size = 0;
@@ -115,19 +113,5 @@ public class myLinkedList {
             temp = temp.next;
         }
         System.out.print(temp.val+"\n");
-    }
-
-    public static void main(String[] args) {
-        myLinkedList l = new myLinkedList();
-        l.pushNode(10);
-        l.pushNode(7);
-        l.pushNode(5);
-        l.appendNode(1);
-        l.pushAtIndex(2, -1);
-        l.printList();
-        l.deleteAtIndex(3);
-        l.printList();
-        int res = l.get(2);
-        System.out.println(res);
     }
 }
