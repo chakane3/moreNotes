@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch SecondMax",
+            "request": "launch",
+            "mainClass": "SecondMax",
+            "projectName": "moreNotes_1ef6f744"
+        },
+        {
+            "type": "java",
             "name": "Launch BinaryTree",
             "request": "launch",
             "mainClass": "BinaryTree",

@@ -23,7 +23,7 @@ public class BinaryTree {
 
             // if the value to insert is greater then attach it on the left
             if(root.leftChild != null) {
-                insertR(root, val);
+                insertR(root.leftChild, val);
             } else {
                 TreeNode newNode = new TreeNode(val);
                 root.leftChild = newNode;
@@ -31,7 +31,7 @@ public class BinaryTree {
         } else {
             // the the value is less than, then attach it on the right
             if(root.rightChild != null) {
-                insertR(root, val);
+                insertR(root.rightChild, val);
             } else {
                 TreeNode newNode = new TreeNode(val);
                 root.rightChild = newNode;

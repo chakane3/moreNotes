@@ -1,8 +1,9 @@
 {
     "java.project.sourcePaths": [
+        "NJIT_java/Trees",
         "NJIT_java/Sorting",
         "NJIT_java/Notes",
         "NJIT_java/LinkedList",
-        "NJIT_java/Trees"
+        "NJIT_java/Array"
     ]
 }

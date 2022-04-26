@@ -1,4 +1,3 @@
-package NJIT_java.Trees;
 import java.util.ArrayList;
 import java.util.List;
 
