@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch HeightOfTree",
+            "request": "launch",
+            "mainClass": "HeightOfTree",
+            "projectName": "moreNotes_1ef6f744"
+        },
+        {
+            "type": "java",
+            "name": "Launch MaxAndMinDepth",
+            "request": "launch",
+            "mainClass": "MaxAndMinDepth",
+            "projectName": "moreNotes_1ef6f744"
+        },
+        {
+            "type": "java",
             "name": "Launch SecondMax",
             "request": "launch",
             "mainClass": "SecondMax",

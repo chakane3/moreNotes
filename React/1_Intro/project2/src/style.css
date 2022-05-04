@@ -2,3 +2,50 @@
     font-family: "Inter";
 
 } */
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    padding-left: 25px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    background-color: black;
+    color: white;
+
+    font-family: Inter, sans-serif;
+}
+
+.header > img {
+    display: flex;
+    /* align-items: baseline; */
+    margin-right: 7px;
+    width: 100px;
+
+}
+
+
+#nav-subtitle {
+    color: white;
+    font-weight: 600;
+}
+
+#nav-title {
+    color: lightskyblue;
+    margin-right: auto;
+}
+
+#nav-subtitle, #nav-title {
+    display: flex;
+    row-gap: 50px;
+}

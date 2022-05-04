@@ -2,18 +2,7 @@
 public class BinaryInsert {
     
 
-    public static void main(String[] args) {
-        // TreeNode node = new TreeNode(50);
-        // insertNode(node, 45);
-        // insertNode(node, 70);
-        // insertNode(node, 77);
-        // insertNode(node, 12);
-        // insertNodeIterative(node, 45);
-        // insertNodeIterative(node, 12);
-        // insertNodeIterative(node, 30);
-        // insertNodeIterative(node, 44);
-
-    }
+    public static void main(String[] args) {}
 
     // Recursive
     // Uses the call stack to traverse down either 
@@ -35,13 +24,11 @@ public class BinaryInsert {
                 TreeNode newNode = new TreeNode(val);
                 root.rightChild = newNode;
             }
-
         }
-
     }
 
     // Iterative
-    // 
+    // Uses a loop to iterathe through nodes in the existing tree
     public static TreeNode insertNodeIterative(TreeNode root, int val) {
         if(root == null) return new TreeNode(val);
         TreeNode currentNode = root;
