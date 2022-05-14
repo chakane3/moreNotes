@@ -3,10 +3,15 @@
 Theres 3 ways to define a function:
 <ul>
     <li>
-    ```javascript
-    const
-     ```
-     </li>
+    ```
+
+    const square function(x) {
+        return x * x
+    }
+
+    ```
+
+    </li>
     <li></li>
     <li></li>
 </ul>
