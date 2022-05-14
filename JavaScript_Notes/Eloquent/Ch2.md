@@ -2,9 +2,11 @@
 
 Theres 3 ways to define a function:
 <ul>
-    <li>```.javascript
+    <li>
+    ```javascript
     const
-     ```</li>
+     ```
+     </li>
     <li></li>
     <li></li>
 </ul>
