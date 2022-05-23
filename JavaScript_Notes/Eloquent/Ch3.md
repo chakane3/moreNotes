@@ -14,13 +14,14 @@ function square(x) {
 }
 ```
 
-** The difference between arrow functions and normal functions is that <b>arrow functions</b> don't hae an arguments binding. The have access to the arguments object of the closest non-arrow parent function. <b>Arguments</b> is an object in this case where it is an array-like object (you are able to convert it into a real array) inside function which contain values passed to that function. Arrow functions do not have a this. keyword. The value of "this" inside an arrow function is the same throughout the lifecycle of the function and is always bound to the value of "this" in the closest non-arrow parent function. Regular function are constructable and callable meaning they can be called using the "new" keyword, arrow functions are not. 
+** The difference between arrow functions and normal functions is that <b>arrow functions</b> don't have an arguments binding. The have access to the arguments object of the closest non-arrow parent function. <b>Arguments</b> is an object in this case where it is an array-like object (you are able to convert it into a real array) inside function which contain values passed to that function. Arrow functions do not have a this. keyword. The value of "this" inside an arrow function is the same throughout the lifecycle of the function and is always bound to the value of "this" in the closest non-arrow parent function. Regular function are constructable and callable meaning they can be called using the "new" keyword, arrow functions are not. 
 ```javascript
 const power = (base, component) => {
     let result = 1
-    for(let count = 0; count < exponent; count++) {
+    for(let count = 0; count < component; count++) {
         result *= base
     }
+    return result
 }
 ```
 
