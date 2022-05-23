@@ -61,3 +61,18 @@ WHERE follows.follower_id = current_user
 Another way we could do this is if we maintain a cache of each user home timeline. When a user posts a tweet, look up all the peple who follow that user, and insert the new tweet into each of their home timeline caches. The request to read the home timeline is then cheap bc its result has been computed ahead of time. 
 
 ## Describing Performance
+Once we have descripbed the upperbound of data (load) on our system there will be some things that will happen once that load increases. There 2 ways of looking at it:
+<ul>
+    <li>When you increase a load parameter and keep the system resources such as: CPU, memory, network bandwidth, etc) unchanged, how is the performance going to be affected?</li>
+    <li>When you increase a load parameter, how much do you need to increase the resources if you want to keep performance unchanged?</li>
+</ul>
+These questions imply that we need performance metrics. Were going to take a look into describing performance on a system.<br>
+
+### Hadoop batch processing system
+In this batch processing system we typically care about throughput, which is the number of records we can process per second or the total time it takes tp run  a job on a dataset of a certain size. When it comes to web systems we really care about **response time** which is the time between a clinet sending a request and receiving a response.<br>
+
+As a side note, latency and response time are usually seen as hvaing the same meaning but theyre not the same. 
+<ul>
+    <li>**Response time** is what the client sees (besides the actual time to process the request i.e service time. It inlcudes network delays and queueing delays.</li>
+    <li>**Latency** is the duration that a request is waiting to be handled (during which it is latent, awaitng service.</li>
+</ul>
