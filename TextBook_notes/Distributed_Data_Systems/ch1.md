@@ -6,7 +6,7 @@ The 3 big ideas behind this book revolve around:
     <li>Maintainability - Operability and evolvability. Over time, other people will work on the system.</li>
 </ul>
 
-Many of the application we see today revolve around the web, and therefore are heavy on user/app generated data. Many applications today need to: (1) Store data using <bold>databases</bold>, (2) Remember the result of an expensive operation using <b>caches<b>, (3) Allow users to search data by keyword or filter it in various ways <b>search indexing</b>, (4) Handle a large amount of accuulated data periodically <b>batch processing</b>. Whenever we combine several tools in order to provide a service our API typically hides that implementation and guarantee that certain things about the data system. When designing a data system or service theres some questions that would arise: 
+Many of the application we see today revolve around the web, and therefore are heavy on user/app generated data. Many applications today need to: (1) Store data using <bold>databases</bold>, (2) Remember the result of an expensive operation using <b>caches</b>, (3) Allow users to search data by keyword or filter it in various ways <b>search indexing</b>, (4) Handle a large amount of accuulated data periodically <b>batch processing</b>. Whenever we combine several tools in order to provide a service our API typically hides that implementation and guarantee that certain things about the data system. When designing a data system or service theres some questions that would arise: 
 <ul>
     <li>How do you ensure that the data reamins correct and complete even when things internally go wrong?</li>
     <li>How to consistently provide good performance to clients even when parts of the system is degraded?</li>
