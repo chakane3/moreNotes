@@ -1,4 +1,4 @@
-let arr = [1, 2, 3, 4, 5, 6, 7]
+let arr = [1, 2, 3, 4, 5, 6, 7, 8]
 
 function linearSearch(arr, target) {
     for(let i = 0; i < arr.length; i++) {
@@ -10,11 +10,18 @@ function linearSearch(arr, target) {
 }
 
 
-let myFunc = {
-    showArgs() {
-        console.log(arguments)
+function binarySearch(arr, target) {
+    let upperBound = arr.length
+    let lowerBound = 0
+    while(upperBound >= lowerBound) {
+        let mid = Math.floor(lowerBound + (upperBound - lowerBound) / 2)
+        if(arr[mid] === target) {
+            return true
+        } else if(arr[mid] > target) {
+            upperBound = mid-1
+        } else if(arr[mid] < target) {
+            lowerBound = mid+1
+        }
     }
+    return false
 }
-
-let x = myFunc.showArgs(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13)
-console.log(x[0])

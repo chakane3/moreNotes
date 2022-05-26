@@ -76,3 +76,46 @@ As a side note, latency and response time are usually seen as hvaing the same me
     <li>**Response time** is what the client sees (besides the actual time to process the request i.e service time. It inlcudes network delays and queueing delays.</li>
     <li>**Latency** is the duration that a request is waiting to be handled (during which it is latent, awaitng service.</li>
 </ul>
+
+Making the same request repeatedly will grant you a slightly different response time every time. Therefore we have to think of response time as a distribution of values that you can measure. There can be many causes to having a different and even slower response time (random additional latency) such as:
+<ul>
+    <li>Loss of a network packet</li>
+    <li>Garbage collection pause</li>
+    <li>Context switch to a background process</li>
+    <li>A page fault forcing a read from a disk</li>
+    <li>Physical viabration in server rack</li>
+    <li>etc</li>
+</ul>
+
+However we can be given an average response time, but it isnt a good metric since we want to convey typical response time. We want to know how many users expereinced a delay. We can express this using percentiles. This way, we can figure out how bad our outliers are in the 95-99th percentile. High percentiles of response time are known as **tail latencies**. these directly affect the users experience of the service. <br>
+
+For example Amazon has response time requirements for the 99.9th percentile. They have found that customers with the slowest requests have the most data on their accounts because they have many many purchases and therefore the most valuebale customers. Its really important to keep them happy by ensuring a very fast and reliable website to browse through. They have also seen that a 100ms increase in response time reduces sales by 1% and satisfaction also goes down as well. <br>
+
+Queueing delays also account for a large part of the response time at high percentiles. A server can only process a small number of things in parallel (limited by its number of CPU cores). It only takes a small number of slow requests to hold up the processing of subsequent requests - this effect is known as <b>head-of-line blocking</b><br>
+
+High percentiles become really important in backend services that are called multiple times as part of serving a single end user request. Even if you make the calls in parallel, the end user requests still need to wait for the slowest parallel calls to complete. If only a small percentage of backend calls are slow, the chance of getting a slow call increases if an end user request requires multiple backend calls, and so a higher proportion of end user requests end up being slow (an effect called tail latency amplification)
+
+
+## Coping With Load
+How do we maintain good performance even when our load parameters increase by some amount? Think about horizontal and vertical scaling a system. Some systems are <b>elastic</b> meaning they can automatically add computing resources when they detect a load increase, whereas some system are scaled manually. 
+<ul>
+    <li>A stateless application is a program that does not save client data generated in one session for use with the next session with that client. </li>
+    <li>A stateful application saves user data for newer sessions.</li>
+</ul>
+
+Therefore a stateful data system is introduce complexity when turning it into a distributed system. For this reason we always keep our database on a single node and scale upwards until scaling cost or high availability required force us to make it a distributed system. An architecture that scales well for a particular application is built around the assumption of which operations will be common and which will be rare - the load parameters. 
+
+## Maintainability
+The majority of the cost of software is its maintenance such as fixing bugs, keeping systems operational, investigating failures, adapting to new platforms, modifying it fo new use cases. There 3 design principles for software system to tackle this idea of maintainability
+
+### Operability
+Making it easy for operations teams to keep the system running smoothly.<br>
+
+
+### Simplicity
+Making it easy for new engineers to understand the system by abstracting complexity. 
+
+### Evolvability
+Making it easy for engineers to make changes to the system in the future and adapting to for unanticipated use cases as requirements change. 
+
+
