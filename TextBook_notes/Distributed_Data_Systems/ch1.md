@@ -111,9 +111,24 @@ The majority of the cost of software is its maintenance such as fixing bugs, kee
 ### Operability
 Making it easy for operations teams to keep the system running smoothly.<br>
 
+Operations teams are needed to keep the software system run smoothly. They typically: 
+<ul>
+    <li>Monitor the health of the system and restore service if it goes into a bad state.</li>
+    <li>Find the root of problems from system failures or degraded performance.</li>
+    <li>Keeping software platforms up-to-date including security patches.</li>
+    <li>Taking notes on how different systems affect eachother. </li>
+    <li>Maintain the security of system as configuration changes. </li>
+    <li>Maintenance tasks such as moving an application from one platform to another. </li>
+    <li>etc</li>
+</ul>
+Good operability means making routine things easy.
+
+
 
 ### Simplicity
-Making it easy for new engineers to understand the system by abstracting complexity. 
+Making it easy for new engineers to understand the system by abstracting complexity. <br>
+
+As projects get larger, it becomes complex and hard to understand. This slows down everyone and increases the cost of maintenance. Reducing complexity makes our systems easier to maintain. The bext way to remove complexity is by <b>abstraction</b>.
 
 ### Evolvability
 Making it easy for engineers to make changes to the system in the future and adapting to for unanticipated use cases as requirements change. 

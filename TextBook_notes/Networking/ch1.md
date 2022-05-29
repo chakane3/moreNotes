@@ -17,4 +17,10 @@ We can also think of the internet as a service which provides services to the ap
 
 End systems attached to the internet provide a <b>socket interface</b> that specifies how a program running on one end system asks the internet infrastructure to deliver data to a specific destination program running on another end system. The socket interface is a set of rules that the sending program must follow to that the internet can deliver the data to the destination program. 
 
-### Network Protocols pg 8
+### Network Protocols
+All the activity on the internet that involves 2 or more machines communicating with eachother is governed by a protocol. A protocol just defines the format and the order of messages exchanged between two or more communicating machines, as well as actions taken on the transmission or receipt of a message.
+
+
+## The Network Edge
+This refers to our hosts(client or servers) such as mobile phones, laptops, etc. These hosts scan also be considered hosts as well. 
+
