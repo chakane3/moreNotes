@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "axios": "^0.27.2",
+    "require": "^0.4.4"
+  },
+  "name": "axios",
+  "description": "This is a JS library used to: <ul> <li>make requests from node.js</li> <li>intercept requests and response data</li> <li>Supports the promise API</li> <li>Transforms data to JSON</li> <li>etc...</li> </ul>",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
