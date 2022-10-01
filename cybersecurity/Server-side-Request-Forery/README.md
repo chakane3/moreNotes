@@ -2,7 +2,7 @@
 
 This attack happens when you make http/s requests to an unintended location. The attacker may cause the server to make a connection to internal-only services within the organizations infrastrucutre. They may also be able to force the server to connect to some external system, thus leaking sensitive data such as a users credentials. <br>
 
-Some common sttacks exploit unauthorized actions from within an organization via back-end systems. Someone can perform an attack on the server itself, where the attacker created an application to send out an HTTP request back to the server that is hostng the application via loopback network interface. This would mean that the attacker would supply a URL with a hostname (127.0.0.1 -> points to the loopback adapter, or localhost). For example, a shopping application will let someone see if an item is in stock. To see whats in stock the application queries some back-end REST API's. A URL is passed to the backend API endpoint via a front-end HRRP request. It may look like this:
+Some common attacks exploit unauthorized actions from within an organization via back-end systems. Someone can perform an attack on the server itself, where the attacker created an application to send out an HTTP request back to the server that is hostng the application via loopback network interface. This would mean that the attacker would supply a URL with a hostname (127.0.0.1 -> points to the loopback adapter, or localhost). For example, a shopping application will let someone see if an item is in stock. To see whats in stock the application queries some back-end REST API's. A URL is passed to the backend API endpoint via a front-end HTTP request. It may look like this:
 
 ### example 1
 ```
