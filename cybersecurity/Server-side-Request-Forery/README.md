@@ -30,7 +30,7 @@ stockApi=http://localhost/admin
 
 Now the server will fetch the contents of the /admin URL and return it to the user. We could also consider that the attacker could just visit /admin directly, however admin functionality may only be accessible to ONLY the vetted users. What happened in this case is that the normal access controls were bypassed and the application grants full access to admin functionality because the request appears to come from a trusted location.<br>
 
-Applications may trust applications that come from the local macine because:
+Applications may trust other applications that come from the local macine because:
 <ul>
     <li>The implementation of the access control check. The developer, etc may had that check sit in front of the application server.</li>
     <li>For special circumstances where an admin may need access without logging in when coming in from the local machine. This may happen in case the admin loses their credentials. The assumption here is that only a trusted user would be coming in from the server itself</li>
