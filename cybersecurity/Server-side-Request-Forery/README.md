@@ -15,7 +15,7 @@ stockApi=http://stock.weliketoshop.net:8080/product/stock/check%3FproductId%3D6%
 
 ```
 
-Here, the server will make a request to that given RUL and return the items stock status. What an attacker would do is modify the request to specify a URL that is local to the server. The bad request would look like this:
+Here, the server will make a request to that given URL and return the items stock status. What an attacker would do is modify the request to specify a URL that is local to the server. The bad request would look like this:
 
 ### example 2
 ```
